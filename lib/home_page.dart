@@ -11,8 +11,8 @@ class MyApp extends StatefulWidget
 
 class _MyAppState extends State<MyApp> 
 {
-  int pointsTeamOne=1;
-  int pointsTeamTwo=1;
+  int pointsTeamOne=0;
+  int pointsTeamTwo=0;
 
   @override
   Widget build(BuildContext context) 
@@ -22,7 +22,7 @@ class _MyAppState extends State<MyApp>
       debugShowCheckedModeBanner: false,
       home: Scaffold
       (
-        appBar: AppBar(title: Text("Counter App"),backgroundColor: Colors.orange,),
+        appBar: AppBar(title: const Text("Counter App"),backgroundColor: Colors.orange,),
         body: Column
         (
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -34,7 +34,7 @@ class _MyAppState extends State<MyApp>
               children: 
               [
                 TeamOne(pointsTeamOne: pointsTeamOne,),
-                SizedBox(height: 450, child: VerticalDivider(color: Colors.grey,indent: 10,endIndent: 25,thickness: 1,)),
+                const SizedBox(height: 450, child: VerticalDivider(color: Colors.grey,indent: 10,endIndent: 25,thickness: 1,)),
                 TeamTwo(pointsTeamTwo: pointsTeamTwo,),
               ],
             ),
@@ -44,7 +44,8 @@ class _MyAppState extends State<MyApp>
               {
                 setState(() 
                 {
-                  pointsTeamOne=0;pointsTeamTwo=0;
+                  pointsTeamOne=0;
+                  pointsTeamTwo=0;
                 });
               },
               child: Text("Reset",style: TextStyle(fontSize: 17),),
