@@ -2,9 +2,17 @@ import 'package:counter_app/Team_one.dart';
 import 'package:counter_app/Team_two.dart';
 import 'package:flutter/material.dart';
 
-class MyApp extends StatelessWidget 
+class MyApp extends StatefulWidget 
 {
-  const MyApp({super.key});
+  MyApp({super.key});
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> 
+{
+  int pointsTeamOne=1;
+  int pointsTeamTwo=1;
 
   @override
   Widget build(BuildContext context) 
@@ -25,14 +33,20 @@ class MyApp extends StatelessWidget
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: 
               [
-                TeamOne(),
+                TeamOne(pointsTeamOne: pointsTeamOne,),
                 SizedBox(height: 450, child: VerticalDivider(color: Colors.grey,indent: 10,endIndent: 25,thickness: 1,)),
-                TeamTwo(),
+                TeamTwo(pointsTeamTwo: pointsTeamTwo,),
               ],
             ),
             MaterialButton
             (
-              onPressed: (){},
+              onPressed: ()
+              {
+                setState(() 
+                {
+                  pointsTeamOne=0;pointsTeamTwo=0;
+                });
+              },
               child: Text("Reset",style: TextStyle(fontSize: 17),),
               color: Colors.amber,
               height: 50,
